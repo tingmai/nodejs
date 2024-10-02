@@ -1,0 +1,235 @@
+Installations and Setup
+-----------------------
+
+make sure you install node js in your PC
+in order to run node applications
+
+check node version
+[command]:
+node --v
+
+if you have already installed node js in your PC,
+let's create a node project:
+
+create a project folder called app1:
+
+
+e:nodejs> 
+
+[command]:
+mkdir app1
+cd app1
+
+
+e:nodejs\app1>
+ 
+[command]:
+npm init -y
+
+PS E:\nodejs> npm init -y
+Wrote to E:\nodejs\package.json:
+
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
+
+
+
+-------------------------------
+
+now we are ready to install node express as the following:
+
+[command]:
+npm i express
+
+
+PS E:\nodejs\app1> npm i express --save
+
+added 65 packages, and audited 66 packages in 13s
+
+13 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+-------------------------------
+
+package.json
+------------
+
+{
+  "name": "app1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.0"
+  }
+}
+
+------------------------------
+
+we are going to install nodemon for autorestart every time
+we make changes to the codes
+
+[command]:
+npm i --save-dev nodemon
+
+
+--------------------------------
+
+PS E:\nodejs\app1> npm i --save-dev nodemon
+
+added 29 packages, and audited 95 packages in 8s
+
+17 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+--------------------------------
+
+package.json
+------------
+
+{
+  "name": "app1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}
+
+-------------------------------------
+modify some codes
+----------------
+
+ "scripts": {
+    "start": "nodemon server.js"
+  },
+
+--------------------------------------
+
+product structure
+
+app1|____ node_modules
+    |____ package-lock.json
+    |____ package.json
+    |____ server.js
+
+------------------------------------
+
+server.js
+
+console.log('Northern City')
+
+---------------------------------
+Run the server as the following:
+
+[command]:
+npm run start
+
+PS E:\nodejs\app1> npm run start
+
+> app1@1.0.0 start
+> node server.js
+
+northern city...
+
+--------------------------------
+
+add some codes to ther server.js
+
+app1/server.js
+
+const express=require('express')
+const app=express()
+
+app(3000)
+
+-------------------------------
+
+Run the server:
+
+[command]:
+npm run start
+
+PS E:\nodejs\app1> npm run start
+
+> app1@1.0.0 start
+> node server.js
+
+-------------------------------------
+
+open the browser and type the localhost url
+
+http://localhost:3000
+
+Cannot GET /
+
+---------------------------------
+
+update codes to the server.js as the following:
+
+app1/server.js
+--------------
+
+const express=require('express')
+const app=express()
+
+app.get("/",(req,res)=>{
+    console.log("testing console...")
+    res.send("Testing Browser...")
+})
+
+app.listen(3000)
+
+
+----------------------------------
+run the server
+
+PS E:\nodejs\app1> npm run start
+
+> app1@1.0.0 start
+> node server.js
+
+testing console...
+------------------------------------
+
+check the browser
+
+http://localhost:3000
+
+Testing Browser...
+
+------------------------------------
+
+
+
+
+
